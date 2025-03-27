@@ -1,0 +1,45 @@
+% This is annote.bib
+% Author: Ayman Ammoura
+% A demo for CMPUT 603 Fall 2002.
+% The order of the following entries is irrelevant. They will be sorted according to the
+% bibliography style used.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{maud2024deep,
+  title={Deep priors for satellite image restoration with accurate uncertainties},
+  author={Maud, Biquard and Chabert, Marie and Genin, Florence and Latry, Christophe and Oberlin, Thomas},
+  journal={arXiv preprint arXiv:2412.04130},
+  year={2024},
+  annote=""
+}
+
+@phdthesis{zerah2024physics,
+  title={Physics-based deep representation learning of vegetation using optical satellite image time series},
+  author={Z{\'e}rah, Yo{\"e}l},
+  year={2024},
+  school={Universit{\'e} de Toulouse},
+  annote="Utilisation d'un modèle physique comme décodeur d'un VAE pour donner de l'interprétabilité aux variables latentes. Les variables latentes sont séparées en deux parties (vecteurs coupé en deux) une partie décodeur 'aléatoire', une partie modèle physique déterministe. Une contrainte de reconstruction, MCRL : $\mathcal{L}_{MCRL} = -ln(p(x_i|z_i))$ permet notamment d'avoir une moyenne proche des $x_i$ et une variance $\hat{\sigma²_i}$ qui représente l'incertitude du décodeur."
+}
+
+@article{dumeur2024self,
+  title={Self-supervised spatio-temporal representation learning of Satellite Image Time Series},
+  author={Dumeur, Iris and Valero, Silvia and Inglada, Jordi},
+  journal={IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing},
+  volume={17},
+  pages={4350--4367},
+  year={2024},
+  publisher={IEEE},
+  annote="Modèle inspiré de BERT. U-BARN → Encodeur Spatial et Spectral. L'image est divisée en patches qui sont encodés puis reconstruits par un U-NET. Les sorties des Unets sont ensuite embeddées par position pour être ensuite données à un transformer. L'idée est d'ensuite d'ajouter une tâche (classif/segmentation, reconstruction) à la fin du U-BARN pour pouvoir l'entrainer à une tâche précise. Problème : pas un VAE, les représentations sont un espace de petite dimension mais pas probabiliste. Quid des incertitudes ?
+  Autre question : les patches introduisent une limite dans la spatialité de la donnée, on reste local"
+}
+
+@article{she2024magic,
+  title={MAGIC: Modular Auto-encoder for Generalisable Model Inversion with Bias Corrections},
+  author={She, Yihang and Atzberger, Clement and Blake, Andrew and Gualandi, Adriano and Keshav, Srinivasan},
+  journal={arXiv preprint arXiv:2405.18953},
+  year={2024},
+  annote="Utilisation d'un AE classique où le décodeur est remplacé par un modèle physique en pytorch. Adaptabilité avec un VAE pour faire de la génération ? Problème, on perd la partie $p(x|z)$. Réseau linéaire, papier de physicien ? Les variables ont plus de sens physique mais même perf qu'un AE classique sur ce problème."
+}
+
+
+%%
