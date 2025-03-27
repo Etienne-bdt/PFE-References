@@ -10,7 +10,7 @@
   author={Maud, Biquard and Chabert, Marie and Genin, Florence and Latry, Christophe and Oberlin, Thomas},
   journal={arXiv preprint arXiv:2412.04130},
   year={2024},
-  annote=""
+  annote="VBLE, utilisation d'une architecture CAE, proche d'un VAE qui estime un hyperprior à partir de $\bar{z}$. On peut donc sampler z à partir de l'hyperprior puis le décoder pour obtenir la moyenne et la variance (en utilisant deux décodeurs). Voir \cite{rybkin2021simple} concernant la méthode."
 }
 
 @phdthesis{zerah2024physics,
@@ -41,5 +41,14 @@
   annote="Utilisation d'un AE classique où le décodeur est remplacé par un modèle physique en pytorch. Adaptabilité avec un VAE pour faire de la génération ? Problème, on perd la partie $p(x|z)$. Réseau linéaire, papier de physicien ? Les variables ont plus de sens physique mais même perf qu'un AE classique sur ce problème."
 }
 
+@inproceedings{rybkin2021simple,
+  title={Simple and effective VAE training with calibrated decoders},
+  author={Rybkin, Oleh and Daniilidis, Kostas and Levine, Sergey},
+  booktitle={International conference on machine learning},
+  pages={9179--9189},
+  year={2021},
+  organization={PMLR},
+  annote="Ici, l'idée est de trouver des méthodes plus faciles/efficaces d'utiliser un VAE. La méthode clé proposée est par exemple d'utiliser une variance apprise et déduite par la variable latente samplée pour un échantillon, ce qui amène des meilleurs résultats de génération."
+}
 
 %%
