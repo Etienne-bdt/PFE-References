@@ -18,7 +18,7 @@
   author={Z{\'e}rah, Yo{\"e}l},
   year={2024},
   school={Universit{\'e} de Toulouse},
-  annote="Utilisation d'un modèle physique comme décodeur d'un VAE pour donner de l'interprétabilité aux variables latentes. Les variables latentes sont séparées en deux parties (vecteurs coupé en deux) une partie décodeur 'aléatoire', une partie modèle physique déterministe. Une contrainte de reconstruction, MCRL : $\mathcal{L}_{MCRL} = -ln(p(x_i|z_i))$ permet notamment d'avoir une moyenne proche des $x_i$ et une variance $\hat{\sigma²_i}$ qui représente l'incertitude du décodeur."
+  annote="Utilisation d'un modèle physique comme décodeur d'un VAE pour donner de l'interprétabilité aux variables latentes. Les variables latentes sont séparées en deux parties (vecteurs coupés en deux) une partie décodeur 'aléatoire', une partie modèle physique déterministe. Une contrainte de reconstruction, MCRL : $\mathcal{L}_{MCRL} = -ln(p(x_i|z_i))$ permet notamment d'avoir une moyenne proche des $x_i$ et une variance $\hat{\sigma²_i}$ qui représente l'incertitude du décodeur."
 }
 
 @article{dumeur2024self,
@@ -30,7 +30,8 @@
   year={2024},
   publisher={IEEE},
   annote="Modèle inspiré de BERT. U-BARN → Encodeur Spatial et Spectral. L'image est divisée en patches qui sont encodés puis reconstruits par un U-NET. Les sorties des Unets sont ensuite embeddées par position pour être ensuite données à un transformer. L'idée est d'ensuite d'ajouter une tâche (classif/segmentation, reconstruction) à la fin du U-BARN pour pouvoir l'entrainer à une tâche précise. Problème : pas un VAE, les représentations sont un espace de petite dimension mais pas probabiliste. Quid des incertitudes ?
-  Autre question : les patches introduisent une limite dans la spatialité de la donnée, on reste local"
+  Autre question : les patches introduisent une limite dans la spatialité de la donnée, on reste local.
+  Le côté temporel se fait dans les patchs embeddings : chaque instant de prise de vue passe dans un SSE. On reshape les SITS en b*t,c,h,w "
 }
 
 @article{she2024magic,
@@ -38,7 +39,7 @@
   author={She, Yihang and Atzberger, Clement and Blake, Andrew and Gualandi, Adriano and Keshav, Srinivasan},
   journal={arXiv preprint arXiv:2405.18953},
   year={2024},
-  annote="Utilisation d'un AE classique où le décodeur est remplacé par un modèle physique en pytorch. Adaptabilité avec un VAE pour faire de la génération ? Problème, on perd la partie $p(x|z)$. Réseau linéaire, papier de physicien ? Les variables ont plus de sens physique mais même perf qu'un AE classique sur ce problème."
+  annote="Utilisation d'un AE classique où le décodeur est remplacé par un modèle physique en pytorch. Adaptabilité avec un VAE pour faire de la génération ? Problème, on perd la partie $p(x|z)$. Réseau linéaire, pertinence ? Les variables ont plus de sens physique mais même perf qu'un AE classique sur ce problème. Cité une fois à la rédaction de ce document."
 }
 
 @inproceedings{rybkin2021simple,
@@ -48,7 +49,7 @@
   pages={9179--9189},
   year={2021},
   organization={PMLR},
-  annote="Ici, l'idée est de trouver des méthodes plus faciles/efficaces d'utiliser un VAE. La méthode clé proposée est par exemple d'utiliser une variance apprise et déduite par la variable latente samplée pour un échantillon, ce qui amène des meilleurs résultats de génération."
+  annote="Ici, l'idée est de trouver des méthodes plus faciles/efficaces d'utiliser un VAE. La méthode clé proposée est par exemple d'utiliser un décodeur pour déduire la variance via la variable latente samplée, ce qui amène des meilleurs résultats de génération et de mesure d'incertitude."
 }
 
 %%
