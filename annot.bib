@@ -10,7 +10,9 @@
   author={Maud, Biquard and Chabert, Marie and Genin, Florence and Latry, Christophe and Oberlin, Thomas},
   journal={arXiv preprint arXiv:2412.04130},
   year={2024},
-  annote="VBLE, utilisation d'une architecture CAE, proche d'un VAE qui estime un hyperprior à partir de $\bar{z}$. On peut donc sampler z à partir de l'hyperprior puis le décoder pour obtenir la moyenne et la variance (en utilisant deux décodeurs). Voir \cite{rybkin2021simple} concernant la méthode."
+  annote="VBLE, utilisation d'une architecture CAE, proche d'un VAE qui estime un hyperprior à partir de $\bar{z}$. On peut donc sampler z à partir de l'hyperprior puis le décoder pour obtenir la moyenne et la variance (en utilisant deux décodeurs). Voir \cite{rybkin2021simple} concernant la méthode.
+  Comment mesurer incertitude ? Ici, pour un pixel, on sample 100 fois l'image et on regarde le pourcentage de fois où la valeur du pixel est dans la valeur du nouveau sample $\pm5\%$ ?
+"
 }
 
 @phdthesis{zerah2024physics,
@@ -31,7 +33,7 @@
   publisher={IEEE},
   annote="Modèle inspiré de BERT. U-BARN → Encodeur Spatial et Spectral. L'image est divisée en patches qui sont encodés puis reconstruits par un U-NET. Les sorties des Unets sont ensuite embeddées par position pour être ensuite données à un transformer. L'idée est d'ensuite d'ajouter une tâche (classif/segmentation, reconstruction) à la fin du U-BARN pour pouvoir l'entrainer à une tâche précise. Problème : pas un VAE, les représentations sont un espace de petite dimension mais pas probabiliste. Quid des incertitudes ?
   Autre question : les patches introduisent une limite dans la spatialité de la donnée, on reste local.
-  Le côté temporel se fait dans les patchs embeddings : chaque instant de prise de vue passe dans un SSE. On reshape les SITS en b*t,c,h,w "
+  Le côté temporel traverse les patchs embeddings : chaque instant de prise de vue passe dans un SSE. On reshape les SITS en b*t,c,h,w puis en b x w x h ,t ,d avant le transformer "
 }
 
 @article{she2024magic,
@@ -49,7 +51,16 @@
   pages={9179--9189},
   year={2021},
   organization={PMLR},
-  annote="Ici, l'idée est de trouver des méthodes plus faciles/efficaces d'utiliser un VAE. La méthode clé proposée est par exemple d'utiliser un décodeur pour déduire la variance via la variable latente samplée, ce qui amène des meilleurs résultats de génération et de mesure d'incertitude."
+  annote="Ici, l'idée est de trouver des méthodes plus faciles/efficaces d'utiliser un VAE. La méthode clé proposée est par exemple de calculer la variance selon les données et de sortir la moyenne via un réseau de neurones. NB : La revue par les pairs est relativement mitigée sur l'intérêt du papier."
+}
+
+@inproceedings{vazhentsev2022uncertainty,
+  title={Uncertainty estimation of transformer predictions for misclassification detection},
+  author={Vazhentsev, Artem and Kuzmin, Gleb and Shelmanov, Artem and Tsvigun, Akim and Tsymbalov, Evgenii and Fedyanin, Kirill and Panov, Maxim and Panchenko, Alexander and Gusev, Gleb and Burtsev, Mikhail and others},
+  booktitle={Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={8237--8252},
+  year={2022},
+  annote="Estimation d'incertitudes d'un transformer en utilisant du dropout pendant l'inférence. En droppant quelques neurones, on peut venir sampler la distribution estimée de la sortie et donc avoir une idée de l'incertitude."
 }
 
 %%
