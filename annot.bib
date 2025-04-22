@@ -88,7 +88,7 @@
   journal={Advances in neural information processing systems},
   volume={28},
   year={2015},
-  annote=""
+  annote="Conditionnement d'un VAE avec une entrée supplémentaire (typiquement un label) pour conditionner le modèle dans l'espace latent"
 }
 
 @inproceedings{prost2024efficient,
@@ -98,6 +98,14 @@
   year={2024},
   annote="Dans ce papier, on a un VAE hiérarchique conditionnel en quelque sorte. l'idée est que les variables latentes données par l'encodeur low-res captent les détails basse fréquences et que conditionné selon ca, on peut ensuite sampler les variables latentes pour ensuite sampler une version High-res en la passant dans notre modèle génératif : $$. L'idée est qu'on va contraindre les k premières variables latentes de l'encodeur HR et LR à correspondre en distribution (via une divergence KL) ce qui essaye de contraindre l'espace latent de capturer une représentation BF/LR de l'image.
   Implem : tu prends un VDVAE et à chaque étage tu viens calculer des moyennes et variances pour les var latentes ?"
+}
+
+@article{gatopoulos2020super,
+  title={Super-resolution variational auto-encoders},
+  author={Gatopoulos, Ioannis and Stol, Maarten and Tomczak, Jakub M},
+  journal={arXiv preprint arXiv:2006.05218},
+  year={2020},
+  annote="Construit sur \cite{sohn2015Learning}. Utilisation d'une image LR pour sampler un premier étage de variables latentes u, puis samplage de z avec u et y et finalement x | z. Papier qui n'entraine que sur des imagettes de 32*32 | 64*64 car peu de puissance de calcul. Possibilité d'amélioration en 256*256 ??"
 }
 
 %%
