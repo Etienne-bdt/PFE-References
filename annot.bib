@@ -96,7 +96,7 @@
   author={Prost, Jean and Houdard, Antoine and Almansa, Andr{\'e}s and Papadakis, Nicolas},
   booktitle={VISAPP 2024-19th International Conference on Computer Vision Theory and Applications},
   year={2024},
-  annote="Dans ce papier, on a un VAE hiérarchique conditionnel en quelque sorte. l'idée est que les variables latentes données par l'encodeur low-res captent les détails basse fréquences et que conditionné selon ca, on peut ensuite sampler les variables latentes pour ensuite sampler une version High-res en la passant dans notre modèle génératif : $$. L'idée est qu'on va contraindre les k premières variables latentes de l'encodeur HR et LR à correspondre en distribution (via une divergence KL) ce qui essaye de contraindre l'espace latent de capturer une représentation BF/LR de l'image.
+  annote="Dans ce papier, on a un VAE hiérarchique conditionnel en quelque sorte. l'idée est que les variables latentes données par l'encodeur low-res captent les détails basse fréquences et que conditionné selon ca, on peut ensuite sampler les variables latentes pour ensuite sampler une version High-res en la passant dans notre modèle génératif . L'idée est qu'on va contraindre les k premières variables latentes de l'encodeur HR et LR à correspondre en distribution (via une divergence KL) ce qui essaye de contraindre l'espace latent de capturer une représentation BF/LR de l'image.
   Implem : tu prends un VDVAE et à chaque étage tu viens calculer des moyennes et variances pour les var latentes ?"
 }
 
