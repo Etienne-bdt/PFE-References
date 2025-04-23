@@ -1,0 +1,111 @@
+% This is annote.bib
+% Author: Ayman Ammoura
+% A demo for CMPUT 603 Fall 2002.
+% The order of the following entries is irrelevant. They will be sorted according to the
+% bibliography style used.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{maud2024deep,
+  title={Deep priors for satellite image restoration with accurate uncertainties},
+  author={Maud, Biquard and Chabert, Marie and Genin, Florence and Latry, Christophe and Oberlin, Thomas},
+  journal={arXiv preprint arXiv:2412.04130},
+  year={2024},
+  annote="VBLE, utilisation d'une architecture CAE, proche d'un VAE qui estime un hyperprior à partir de $\bar{z}$. On peut donc sampler z à partir de l'hyperprior puis le décoder pour obtenir la moyenne et la variance (en utilisant deux décodeurs). Voir \cite{rybkin2021simple} concernant la méthode.
+  Comment mesurer incertitude ? Ici, pour un pixel, on sample 100 fois l'image et on regarde le pourcentage de fois où la valeur du pixel est dans la valeur du nouveau sample $\pm5\%$ ?
+"
+}
+
+@phdthesis{zerah2024physics,
+  title={Physics-based deep representation learning of vegetation using optical satellite image time series},
+  author={Z{\'e}rah, Yo{\"e}l},
+  year={2024},
+  school={Universit{\'e} de Toulouse},
+  annote="Utilisation d'un modèle physique comme décodeur d'un VAE pour donner de l'interprétabilité aux variables latentes. Les variables latentes sont séparées en deux parties (vecteurs coupés en deux) une partie décodeur 'aléatoire', une partie modèle physique déterministe. Une contrainte de reconstruction, MCRL : $\mathcal{L}_{MCRL} = -ln(p(x_i|z_i))$ permet notamment d'avoir une moyenne proche des $x_i$ et une variance $\hat{\sigma²_i}$ qui représente l'incertitude du décodeur."
+}
+
+@article{dumeur2024self,
+  title={Self-supervised spatio-temporal representation learning of Satellite Image Time Series},
+  author={Dumeur, Iris and Valero, Silvia and Inglada, Jordi},
+  journal={IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing},
+  volume={17},
+  pages={4350--4367},
+  year={2024},
+  publisher={IEEE},
+  annote="Modèle inspiré de BERT. U-BARN → Encodeur Spatial et Spectral. L'image est divisée en patches qui sont encodés puis reconstruits par un U-NET. Les sorties des Unets sont ensuite embeddées par position pour être ensuite données à un transformer. L'idée est d'ensuite d'ajouter une tâche (classif/segmentation, reconstruction) à la fin du U-BARN pour pouvoir l'entrainer à une tâche précise. Problème : pas un VAE, les représentations sont un espace de petite dimension mais pas probabiliste. Quid des incertitudes ?
+  Autre question : les patches introduisent une limite dans la spatialité de la donnée, on reste local.
+  Le côté temporel traverse les patchs embeddings : chaque instant de prise de vue passe dans un SSE. On reshape les SITS en b*t,c,h,w puis en b x w x h ,t ,d avant le transformer "
+}
+
+@article{she2024magic,
+  title={MAGIC: Modular Auto-encoder for Generalisable Model Inversion with Bias Corrections},
+  author={She, Yihang and Atzberger, Clement and Blake, Andrew and Gualandi, Adriano and Keshav, Srinivasan},
+  journal={arXiv preprint arXiv:2405.18953},
+  year={2024},
+  annote="Utilisation d'un AE classique où le décodeur est remplacé par un modèle physique en pytorch. Adaptabilité avec un VAE pour faire de la génération ? Problème, on perd la partie $p(x|z)$. Réseau linéaire, pertinence ? Les variables ont plus de sens physique mais même perf qu'un AE classique sur ce problème. Cité une fois à la rédaction de ce document."
+}
+
+@inproceedings{rybkin2021simple,
+  title={Simple and effective VAE training with calibrated decoders},
+  author={Rybkin, Oleh and Daniilidis, Kostas and Levine, Sergey},
+  booktitle={International conference on machine learning},
+  pages={9179--9189},
+  year={2021},
+  organization={PMLR},
+  annote="Ici, l'idée est de trouver des méthodes plus faciles/efficaces d'utiliser un VAE. La méthode clé proposée est par exemple de calculer la variance selon les données et de sortir la moyenne via un réseau de neurones. NB : La revue par les pairs est relativement mitigée sur l'intérêt du papier."
+}
+
+@inproceedings{vazhentsev2022uncertainty,
+  title={Uncertainty estimation of transformer predictions for misclassification detection},
+  author={Vazhentsev, Artem and Kuzmin, Gleb and Shelmanov, Artem and Tsvigun, Akim and Tsymbalov, Evgenii and Fedyanin, Kirill and Panov, Maxim and Panchenko, Alexander and Gusev, Gleb and Burtsev, Mikhail and others},
+  booktitle={Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={8237--8252},
+  year={2022},
+  annote="Estimation d'incertitudes d'un transformer en utilisant du dropout pendant l'inférence. En droppant quelques neurones, on peut venir sampler la distribution estimée de la sortie et donc avoir une idée de l'incertitude."
+}
+
+@inproceedings{dorta2018structured,
+  title={Structured uncertainty prediction networks},
+  author={Dorta, Garoe and Vicente, Sara and Agapito, Lourdes and Campbell, Neill DF and Simpson, Ivor},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={5477--5485},
+  year={2018},
+  annote="Amélioration des VAE en apprenant une variance plus complexe et creuse en utilisant cholesky. Cela améliore les échantillons mais au prix d'une petite quantité de calculs en plus. Il est aussi proposé une façon plus performante à l'aide d'une distance de mahalanobis et de normalisation spectrale : regarder la distance entre la classe la plus proche et la prédiction (pas pertinent ici)"
+}
+
+@inproceedings{azizi2024coupled,
+  title={Coupled VAE and Interpolator Approach for Fast Hyperspectral Image Emulation},
+  author={Azizi, Chedly Ben and Guilloteau, Claire and Roussel, Gilles and Puigt, Matthieu},
+  booktitle={2024 14th Workshop on Hyperspectral Imaging and Signal Processing: Evolution in Remote Sensing (WHISPERS)},
+  pages={1--5},
+  year={2024},
+  organization={IEEE},
+  annote="Cocorico, ce papier parle d'un VAE où l'on remplace l'encodeur par un réseau 'interpolateur' qui vient projeter des variables biophysiques dans l'espace latent après avoir entrainé le VAE pour de la reconstruction. Le décodeur est frozen pour la deuxième partie."
+}
+
+@article{sohn2015learning,
+  title={Learning structured output representation using deep conditional generative models},
+  author={Sohn, Kihyuk and Lee, Honglak and Yan, Xinchen},
+  journal={Advances in neural information processing systems},
+  volume={28},
+  year={2015},
+  annote="Conditionnement d'un VAE avec une entrée supplémentaire (typiquement un label) pour conditionner le modèle dans l'espace latent"
+}
+
+@inproceedings{prost2024efficient,
+  title={Efficient Posterior Sampling For Diverse Super-Resolution with Hierarchical VAE Prior},
+  author={Prost, Jean and Houdard, Antoine and Almansa, Andr{\'e}s and Papadakis, Nicolas},
+  booktitle={VISAPP 2024-19th International Conference on Computer Vision Theory and Applications},
+  year={2024},
+  annote="Dans ce papier, on a un VAE hiérarchique conditionnel en quelque sorte. l'idée est que les variables latentes données par l'encodeur low-res captent les détails basse fréquences et que conditionné selon ca, on peut ensuite sampler les variables latentes pour ensuite sampler une version High-res en la passant dans notre modèle génératif . L'idée est qu'on va contraindre les k premières variables latentes de l'encodeur HR et LR à correspondre en distribution (via une divergence KL) ce qui essaye de contraindre l'espace latent de capturer une représentation BF/LR de l'image.
+  Implem : tu prends un VDVAE et à chaque étage tu viens calculer des moyennes et variances pour les var latentes ?"
+}
+
+@article{gatopoulos2020super,
+  title={Super-resolution variational auto-encoders},
+  author={Gatopoulos, Ioannis and Stol, Maarten and Tomczak, Jakub M},
+  journal={arXiv preprint arXiv:2006.05218},
+  year={2020},
+  annote="Construit sur \cite{sohn2015Learning}. Utilisation d'une image LR pour sampler un premier étage de variables latentes u, puis samplage de z avec u et y et finalement x | z. Papier qui n'entraine que sur des imagettes de 32*32 | 64*64 car peu de puissance de calcul. Possibilité d'amélioration en 256*256 ??"
+}
+
+%%
