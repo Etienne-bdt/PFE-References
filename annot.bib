@@ -28,6 +28,26 @@
   note = {Mod{\`e}le inspir{\'e} de BERT. U-BARN {$\rightarrow$} Encodeur Spatial et Spectral. L'image est divis{\'e}e en patches qui sont encod{\'e}s puis reconstruits par un U-NET. Les sorties des Unets sont ensuite embedd{\'e}es par position pour {\^e}tre ensuite donn{\'e}es {\`a} un transformer. L'id{\'e}e est d'ensuite d'ajouter une t{\^a}che (classif/segmentation, reconstruction) {\`a} la fin du U-BARN pour pouvoir l'entrainer {\`a} une t{\^a}che pr{\'e}cise. Probl{\`e}me : pas un VAE, les repr{\'e}sentations sont un espace de petite dimension mais pas probabiliste. Quid des incertitudes ? Autre question : les patches introduisent une limite dans la spatialit{\'e} de la donn{\'e}e, on reste local. Le c{\^o}t{\'e} temporel traverse les patchs embeddings : chaque instant de prise de vue passe dans un SSE. On reshape les SITS en b*t,c,h,w puis en b x w x h ,t ,d avant le transformer}
 }
 
+@article{gatopoulosSelfSupervisedVariationalAutoEncoders2021,
+  title = {Self-{{Supervised Variational Auto-Encoders}}},
+  author = {Gatopoulos, Ioannis and Tomczak, Jakub M.},
+  year = {2021},
+  month = jun,
+  journal = {Entropy},
+  volume = {23},
+  number = {6},
+  pages = {747},
+  publisher = {Multidisciplinary Digital Publishing Institute},
+  issn = {1099-4300},
+  doi = {10.3390/e23060747},
+  urldate = {2025-04-24},
+  abstract = {Density estimation, compression, and data generation are crucial tasks in artificial intelligence. Variational Auto-Encoders (VAEs) constitute a single framework to achieve these goals. Here, we present a novel class of generative models, called self-supervised Variational Auto-Encoder (selfVAE), which utilizes deterministic and discrete transformations of data. This class of models allows both conditional and unconditional sampling while simplifying the objective function. First, we use a single self-supervised transformation as a latent variable, where the transformation is either downscaling or edge detection. Next, we consider a hierarchical architecture, i.e., multiple transformations, and we show its benefits compared to the VAE. The flexibility of selfVAE in data reconstruction finds a particularly interesting use case in data compression tasks, where we can trade-off memory for better data quality and vice-versa. We present the performance of our approach on three benchmark image data (Cifar10, Imagenette64, and CelebA).},
+  copyright = {http://creativecommons.org/licenses/by/3.0/},
+  langid = {english},
+  keywords = {deep generative modeling,deep learning,non-learnable transformations,probabilistic modeling},
+  file = {/home/disc/e.bardet/Zotero/storage/JDBNNI8D/Gatopoulos et Tomczak - 2021 - Self-Supervised Variational Auto-Encoders.pdf}
+}
+
 @article{gatopoulosSuperresolutionVariationalAutoencoders2020,
   title = {Super-Resolution Variational Auto-Encoders},
   author = {Gatopoulos, Ioannis and Stol, Maarten and Tomczak, Jakub M},
@@ -36,16 +56,6 @@
   eprint = {2006.05218},
   archiveprefix = {arXiv},
   note = {Construit sur {\textbackslash}citesohn2015Learning. Utilisation d'une image LR pour sampler un premier {\'e}tage de variables latentes u, puis samplage de z avec u et y et finalement x {\textbar} z. Papier qui n'entraine que sur des imagettes de 32*32 {\textbar} 64*64 car peu de puissance de calcul. Possibilit{\'e} d'am{\'e}lioration en 256*256 ??}
-}
-
-@misc{heynsRetorquereZoterobetterbibtex2025,
-  title = {Retorquere/Zotero-Better-Bibtex},
-  author = {Heyns, Emiliano},
-  year = {2025},
-  month = apr,
-  urldate = {2025-04-23},
-  abstract = {Make Zotero effective for us LaTeX holdouts},
-  copyright = {MIT}
 }
 
 @article{maudDeepPriorsSatellite2024,
@@ -74,6 +84,30 @@
   pages = {9179--9189},
   publisher = {PMLR},
   note = {Ici, l'id{\'e}e est de trouver des m{\'e}thodes plus faciles/efficaces d'utiliser un VAE. La m{\'e}thode cl{\'e} propos{\'e}e est par exemple de calculer la variance selon les donn{\'e}es et de sortir la moyenne via un r{\'e}seau de neurones. NB : La revue par les pairs est relativement mitig{\'e}e sur l'int{\'e}r{\^e}t du papier.}
+}
+
+@misc{salimans2017PixelCNN,
+  title = {{{PixelCNN}}++: {{Improving}} the {{PixelCNN}} with {{Discretized Logistic Mixture Likelihood}} and {{Other Modifications}}},
+  shorttitle = {{{PixelCNN}}++},
+  author = {Salimans, Tim and Karpathy, Andrej and Chen, Xi and Kingma, Diederik P.},
+  year = {2017},
+  month = jan,
+  number = {arXiv:1701.05517},
+  eprint = {1701.05517},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1701.05517},
+  urldate = {2025-04-24},
+  abstract = {PixelCNNs are a recently proposed class of powerful generative models with tractable likelihood. Here we discuss our implementation of PixelCNNs which we make available at https://github.com/openai/pixel-cnn. Our implementation contains a number of modifications to the original model that both simplify its structure and improve its performance. 1) We use a discretized logistic mixture likelihood on the pixels, rather than a 256-way softmax, which we find to speed up training. 2) We condition on whole pixels, rather than R/G/B sub-pixels, simplifying the model structure. 3) We use downsampling to efficiently capture structure at multiple resolutions. 4) We introduce additional short-cut connections to further speed up optimization. 5) We regularize the model using dropout. Finally, we present state-of-the-art log likelihood results on CIFAR-10 to demonstrate the usefulness of these modifications.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+  note = {\section{Annotations\\
+(24/04/2025 10:32:50)}
+
+\par
+<< By choosing a simple continuous distribution for modeling {$\nu$} (like the logistic distribution as done by Kingma et al. (2016)) we obtain a smooth and memory efficient predictive distribution for x. Here, we take this continuous univariate distribution to be a mixture of logistic distributions which allows us to easily calculate the probability on the observed discretized value x, as shown in equation (2) >> (Salimans et al., 2017, p. 2) Utilisation de mixture de logistiques pour mod{\'e}liser la densit{\'e} de proba sur 0,255},
+  file = {/home/disc/e.bardet/Zotero/storage/4FW3HITL/Salimans et al. - 2017 - PixelCNN++ Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modificati.pdf}
 }
 
 @article{sheMAGICModularAutoencoder2024,

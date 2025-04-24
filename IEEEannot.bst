@@ -451,10 +451,10 @@ FUNCTION {initialize.controls}
 
 % annotation addition
 FUNCTION {format.annotate}
-{ annote empty$
+{ note empty$
 	{ "" }
 	{ " \begin{quotation}\noindent "
-		annote
+		note
 		* " \end{quotation} " *
 	}
 	if$
@@ -777,7 +777,7 @@ FUNCTION {either.or.check}
 
 FUNCTION {empty.entry.warn}
 { author empty$ title empty$ howpublished empty$
-  month empty$ year empty$ note empty$ url empty$
+  month empty$ year empty$ annote empty$ url empty$
   and and and and and and
     { "all relevant fields are empty in " cite$ * warning$ }
     'skip$
@@ -1720,12 +1720,12 @@ FUNCTION {format.tech.report.number}
 %% note
 
 FUNCTION {format.note}
-{ note empty$
+{ annote empty$
     { "" }
     { this.to.prev.status
       this.status.std
       punct.period 'this.status.punct :=
-      note #1 #1 substring$
+      annote #1 #1 substring$
       duplicate$ "{" =
         { skip$ }
         { status.cap
@@ -1735,7 +1735,7 @@ FUNCTION {format.note}
         change.case$
         }
       if$
-      note #2 global.max$ substring$ * "note" bibinfo.check
+      annote #2 global.max$ substring$ * "annote" bibinfo.check
       cap.yes  'status.cap :=
     }
   if$
