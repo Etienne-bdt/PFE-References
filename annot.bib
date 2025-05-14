@@ -8,6 +8,25 @@
   note = {Cocorico, ce papier parle d'un VAE o{\`u} l'on remplace l'encodeur par un r{\'e}seau 'interpolateur' qui vient projeter des variables biophysiques dans l'espace latent apr{\`e}s avoir entrain{\'e} le VAE pour de la reconstruction. Le d{\'e}codeur est frozen pour la deuxi{\`e}me partie.}
 }
 
+@misc{blumenstiel2025TerraMesh,
+  title = {{{TerraMesh}}: {{A Planetary Mosaic}} of {{Multimodal Earth Observation Data}}},
+  shorttitle = {{{TerraMesh}}},
+  author = {Blumenstiel, Benedikt and Fraccaro, Paolo and Marsocci, Valerio and Jakubik, Johannes and Maurogiovanni, Stefano and Czerkawski, Mikolaj and Sedona, Rocco and Cavallaro, Gabriele and Brunschwiler, Thomas and {Bernabe-Moreno}, Juan and Long{\'e}p{\'e}, Nicolas},
+  year = {2025},
+  month = apr,
+  number = {arXiv:2504.11172},
+  eprint = {2504.11172},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2504.11172},
+  urldate = {2025-05-12},
+  abstract = {Large-scale foundation models in Earth Observation can learn versatile, label-efficient representations by leveraging massive amounts of unlabeled data. However, existing public datasets are often limited in scale, geographic coverage, or sensor variety. We introduce TerraMesh, a new globally diverse, multimodal dataset combining optical, synthetic aperture radar, elevation, and land-cover modalities in an Analysis-Ready Data format. TerraMesh includes over 9 million samples with eight spatiotemporal aligned modalities, enabling large-scale pre-training and fostering robust cross-modal correlation learning. We provide detailed data processing steps, comprehensive statistics, and empirical evidence demonstrating improved model performance when pre-trained on TerraMesh. The dataset will be made publicly available with a permissive license.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition},
+  file = {/home/disc/e.bardet/Zotero/storage/VMPDSQVG/Blumenstiel et al. - 2025 - TerraMesh A Planetary Mosaic of Multimodal Earth Observation Data.pdf}
+}
+
 @inproceedings{dortaStructuredUncertaintyPrediction2018,
   title = {Structured Uncertainty Prediction Networks},
   booktitle = {Proceedings of the {{IEEE}} Conference on Computer Vision and Pattern Recognition},
@@ -26,6 +45,17 @@
   pages = {4350--4367},
   publisher = {IEEE},
   note = {Mod{\`e}le inspir{\'e} de BERT. U-BARN {$\rightarrow$} Encodeur Spatial et Spectral. L'image est divis{\'e}e en patches qui sont encod{\'e}s puis reconstruits par un U-NET. Les sorties des Unets sont ensuite embedd{\'e}es par position pour {\^e}tre ensuite donn{\'e}es {\`a} un transformer. L'id{\'e}e est d'ensuite d'ajouter une t{\^a}che (classif/segmentation, reconstruction) {\`a} la fin du U-BARN pour pouvoir l'entrainer {\`a} une t{\^a}che pr{\'e}cise. Probl{\`e}me : pas un VAE, les repr{\'e}sentations sont un espace de petite dimension mais pas probabiliste. Quid des incertitudes ? Autre question : les patches introduisent une limite dans la spatialit{\'e} de la donn{\'e}e, on reste local. Le c{\^o}t{\'e} temporel traverse les patchs embeddings : chaque instant de prise de vue passe dans un SSE. On reshape les SITS en b*t,c,h,w puis en b x w x h ,t ,d avant le transformer}
+}
+
+@article{gatopoulos2020Superresolution,
+  title = {Super-Resolution Variational Auto-Encoders},
+  author = {Gatopoulos, Ioannis and Stol, Maarten and Tomczak, Jakub M},
+  year = {2020},
+  journal = {arXiv preprint arXiv:2006.05218},
+  eprint = {2006.05218},
+  archiveprefix = {arXiv},
+  note = {Construit sur {\textbackslash}citesohn2015Learning. Utilisation d'une image LR pour sampler un premier {\'e}tage de variables latentes u, puis samplage de z avec u et y et finalement x {\textbar} z. Papier qui n'entraine que sur des imagettes de 32*32 {\textbar} 64*64 car peu de puissance de calcul. Possibilit{\'e} d'am{\'e}lioration en 256*256 ??},
+  file = {/home/disc/e.bardet/Zotero/storage/G558753H/Gatopoulos et al. - 2020 - Super-resolution Variational Auto-Encoders.pdf}
 }
 
 @article{gatopoulosSelfSupervisedVariationalAutoEncoders2021,
@@ -48,17 +78,26 @@
   file = {/home/disc/e.bardet/Zotero/storage/JDBNNI8D/Gatopoulos et Tomczak - 2021 - Self-Supervised Variational Auto-Encoders.pdf}
 }
 
-@article{gatopoulosSuperresolutionVariationalAutoencoders2020,
-  title = {Super-Resolution Variational Auto-Encoders},
-  author = {Gatopoulos, Ioannis and Stol, Maarten and Tomczak, Jakub M},
-  year = {2020},
-  journal = {arXiv preprint arXiv:2006.05218},
-  eprint = {2006.05218},
+@misc{jakubik2025TerraMind,
+  title = {{{TerraMind}}: {{Large-Scale Generative Multimodality}} for {{Earth Observation}}},
+  shorttitle = {{{TerraMind}}},
+  author = {Jakubik, Johannes and Yang, Felix and Blumenstiel, Benedikt and Scheurer, Erik and Sedona, Rocco and Maurogiovanni, Stefano and Bosmans, Jente and Dionelis, Nikolaos and Marsocci, Valerio and Kopp, Niklas and Ramachandran, Rahul and Fraccaro, Paolo and Brunschwiler, Thomas and Cavallaro, Gabriele and {Bernabe-Moreno}, Juan and Long{\'e}p{\'e}, Nicolas},
+  year = {2025},
+  month = apr,
+  number = {arXiv:2504.11171},
+  eprint = {2504.11171},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2504.11171},
+  urldate = {2025-04-29},
+  abstract = {We present TerraMind, the first any-to-any generative, multimodal foundation model for Earth observation (EO). Unlike other multimodal models, TerraMind is pretrained on dual-scale representations combining both token-level and pixel-level data across modalities. On a token level, TerraMind encodes high-level contextual information to learn cross-modal relationships, while on a pixel level, TerraMind leverages fine-grained representations to capture critical spatial nuances. We pretrained TerraMind on nine geospatial modalities of a global, large-scale dataset. In this paper, we demonstrate that (i) TerraMind's dual-scale early fusion approach unlocks a range of zero-shot and few-shot applications for Earth observation, (ii) TerraMind introduces ``thinking in modalities'' (TiM)---the capability of generating additional artificial data during finetuning and inference to improve the model output---and (iii) TerraMind achieves beyond state-of-the-art performance in community-standard benchmarks for EO like PANGAEA. The pretraining dataset, the model weights, and our code will be open-sourced under a permissive license.},
   archiveprefix = {arXiv},
-  note = {Construit sur {\textbackslash}citesohn2015Learning. Utilisation d'une image LR pour sampler un premier {\'e}tage de variables latentes u, puis samplage de z avec u et y et finalement x {\textbar} z. Papier qui n'entraine que sur des imagettes de 32*32 {\textbar} 64*64 car peu de puissance de calcul. Possibilit{\'e} d'am{\'e}lioration en 256*256 ??}
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition},
+  file = {/home/disc/e.bardet/Zotero/storage/U9FJVZKX/Jakubik et al. - 2025 - TerraMind Large-Scale Generative Multimodality for Earth Observation.pdf}
 }
 
-@article{maudDeepPriorsSatellite2024,
+@article{maud2024Deep,
   title = {Deep Priors for Satellite Image Restoration with Accurate Uncertainties},
   author = {Maud, Biquard and Chabert, Marie and Genin, Florence and Latry, Christophe and Oberlin, Thomas},
   year = {2024},
@@ -136,6 +175,25 @@
   year = {2022},
   pages = {8237--8252},
   note = {Estimation d'incertitudes d'un transformer en utilisant du dropout pendant l'inf{\'e}rence. En droppant quelques neurones, on peut venir sampler la distribution estim{\'e}e de la sortie et donc avoir une id{\'e}e de l'incertitude.}
+}
+
+@misc{yu2025SatelliteCalculator,
+  title = {{{SatelliteCalculator}}: {{A Multi-Task Vision Foundation Model}} for {{Quantitative Remote Sensing Inversion}}},
+  shorttitle = {{{SatelliteCalculator}}},
+  author = {Yu, Zhenyu and Idris, Mohd Yamani Idna and Wang, Pei},
+  year = {2025},
+  month = apr,
+  number = {arXiv:2504.13442},
+  eprint = {2504.13442},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2504.13442},
+  urldate = {2025-04-29},
+  abstract = {Quantitative remote sensing inversion plays a critical role in environmental monitoring, enabling the estimation of key ecological variables such as vegetation indices, canopy structure, and carbon stock. Although vision foundation models have achieved remarkable progress in classification and segmentation tasks, their application to physically interpretable regression remains largely unexplored. Furthermore, the multi-spectral nature and geospatial heterogeneity of remote sensing data pose significant challenges for generalization and transferability. To address these issues, we introduce SatelliteCalculator, the first vision foundation model tailored for quantitative remote sensing inversion. By leveraging physically defined index formulas, we automatically construct a large-scale dataset of over one million paired samples across eight core ecological indicators. The model integrates a frozen Swin Transformer backbone with a prompt-guided architecture, featuring cross-attentive adapters and lightweight task-specific MLP decoders. Experiments on the Open-Canopy benchmark demonstrate that SatelliteCalculator achieves competitive accuracy across all tasks while significantly reducing inference cost. Our results validate the feasibility of applying foundation models to quantitative inversion, and provide a scalable framework for task-adaptive remote sensing estimation.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition},
+  file = {/home/disc/e.bardet/Zotero/storage/AJXRS3ZK/Yu et al. - 2025 - SatelliteCalculator A Multi-Task Vision Foundation Model for Quantitative Remote Sensing Inversion.pdf}
 }
 
 @phdthesis{zerahPhysicsbasedDeepRepresentation2024,
